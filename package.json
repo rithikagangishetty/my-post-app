@@ -1,12 +1,13 @@
 {
   "name": "my-post-app",
   "version": "1.0.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start",
-    "prisma": "prisma generate"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "postinstall": "prisma generate"
+},
+
   "dependencies": {
     "@prisma/client": "^4.15.0",
     "autoprefixer": "^10.4.21",

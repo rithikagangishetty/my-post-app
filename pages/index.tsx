@@ -9,6 +9,7 @@ type Post = { id: number; title: string; body: string };
 
 const Home = () => {
     const [posts, setPosts] = useState<Post[]>([]);
+    const [visibleCount, setVisibleCount] = useState(20); // Number of posts to show initially
     const [loading, setLoading] = useState(true);
     const [newTitle, setNewTitle] = useState("");
     const [newBody, setNewBody] = useState("");
@@ -138,6 +139,7 @@ const Home = () => {
                     {/* Posts List Container */}
                     <h2 className="text-2xl font-semibold mb-4 text-primary">Post List</h2>
                     {loading ? <p className="text-center text-gray-500">Loading...</p> : (
+                        <>
                         <table className="min-w-full border rounded-2xl overflow-hidden">
                             <thead>
                                 <tr className="bg-gray-100">
@@ -146,7 +148,7 @@ const Home = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {Array.isArray(posts) && posts.map(post => (
+                                {Array.isArray(posts) && posts.slice(0, visibleCount).map(post => (
                                     <tr key={post.id} className="border-t">
                                         <td className="px-8 py-4 text-lg">{post.title}</td>
                                         <td className="px-8 py-4 flex gap-4">
@@ -160,6 +162,17 @@ const Home = () => {
                                 ))}
                             </tbody>
                         </table>
+                        {visibleCount < posts.length && (
+                            <div className="flex justify-center mt-6">
+                                <button
+                                    className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl font-semibold shadow-sm transition focus:outline-none focus:ring-4 focus:ring-primary/30"
+                                    onClick={() => setVisibleCount(c => c + 20)}
+                                >
+                                    Load More
+                                </button>
+                            </div>
+                        )}
+                        </>
                     )}
                 </div>
             </div>

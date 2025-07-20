@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+
+# local env files
+.env
+
+# log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Prisma generated files
+prisma/migrations/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Vercel/Netlify
+.vercel/
+.netlify/
+
+# Misc
+*.swp

@@ -22,6 +22,7 @@ const Home = () => {
     // Fetch posts from API with pagination
     const fetchPosts = (newSkip = 0, append = false) => {
         setLoading(true);
+        
         console.log("Sending API key:", process.env.NEXT_PUBLIC_API_KEY);
         fetch(`/api/posts?skip=${newSkip}&take=${take}`, {
             headers: {

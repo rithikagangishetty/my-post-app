@@ -5,8 +5,7 @@ import prisma from '../../../lib/prisma';
 // API key protection middleware
 function checkApiKey(req: NextApiRequest, res: NextApiResponse): boolean {
   const apiKey = req.headers['x-api-key'] || req.query.api_key;
-  console.log('Received API key:', apiKey);
-  console.log('Expected API key:', process.env.API_KEY);
+
   if (apiKey !== process.env.API_KEY) {
     res.status(401).json({ message: 'Invalid or missing API key' });
     return false;
